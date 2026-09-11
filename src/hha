@@ -1,0 +1,33 @@
+//Rizqi Prawira Wisesa (25/560504/PA/23621)
+//Ezzy Kusuma Putra (25/566874/PA/23929)
+#include <Arduino.h>
+
+#define potensiometer 34
+
+void setup(){
+  Serial.begin(115200);
+  pinMode(potensiometer,INPUT);
+
+  Serial.println("3. Reading ADC dan Konversi Tegangan & Hambatan");
+}
+
+void loop(){
+  int rawADC = analogRead(potensiometer);
+
+  float tegangan = (rawADC/4096.0)*3.3;
+
+  float hambatan = (tegangan/3.3)*10000.0;
+
+Serial.print("Raw ADC: ");
+Serial.print(rawADC);
+
+Serial.print(" | Tegangan: ");
+Serial.print(tegangan, 2);
+Serial.print(" V");
+
+Serial.print(" | Hambatan: ");
+Serial.print(hambatan, 0); 
+Serial.println(" Ohm");
+
+delay(1000);
+}
